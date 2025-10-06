@@ -108,6 +108,32 @@ function detectCLevelQuery(q: string): QueryMatch | null {
     };
   }
 
+  // 1a. Detailed Analytics Dashboard
+  if (
+    q.includes('detailed analytics') ||
+    q.includes('analytics dashboard') ||
+    (q.includes('show me') && q.includes('analytics'))
+  ) {
+    return {
+      widgetType: 'analytics-dashboard',
+      widgetData: analyticsDashboardDemo,
+      responseText: "Here's the detailed analytics dashboard:",
+    };
+  }
+
+  // 1b. Performance Trends
+  if (
+    q.includes('performance trends') ||
+    (q.includes('trends') && q.includes('week')) ||
+    (q.includes('our performance') && q.includes('last week'))
+  ) {
+    return {
+      widgetType: 'performance-trends',
+      widgetData: performanceTrendsDemo,
+      responseText: "Here are the performance trends over the last week:",
+    };
+  }
+
   // 2. Customer Risk Profile & High-Risk Customers
   if (
     q.includes('high-risk customers') ||
